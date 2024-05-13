@@ -16,14 +16,14 @@ CREATE TABLE `Member` (
 )AUTO_INCREMENT=10000000;
 DROP TABLE IF EXISTS `Item`;
 CREATE TABLE `Item` (  
-	itemId VARCHAR(8),
+	itemId INT(8) AUTO_INCREMENT,
 	itemName VARCHAR(16),
 	itemDescription TEXT,
 	picture TEXT,
 	price DECIMAL(10, 2),
 	inventoryQuantity INT,
     PRIMARY KEY (itemId)
-);
+)AUTO_INCREMENT=10000000;
 DROP TABLE IF EXISTS `Type`;
 CREATE TABLE `Type` (  
     typeId VARCHAR(8),
@@ -53,8 +53,8 @@ CREATE TABLE `OrderDetails` (
 );
 DROP TABLE IF EXISTS `Cart`;
 CREATE TABLE `Cart` (  
-    memberId VARCHAR(8),
-	itemId VARCHAR(8),
+    memberId INT(8),
+	itemId INT(8),
 	quantity INT,
     PRIMARY KEY (memberId)
 );

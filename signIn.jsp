@@ -2,8 +2,9 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import="java.time.Instant" %>
+<%@ page import="javax.servlet.http.*" %>
 <%
-// 判断是否是提交表单的请求
+//判斷是否是提交表單的請求
 if ("POST".equalsIgnoreCase(request.getMethod())) {
     String message = "";
     Connection con = null;
@@ -12,7 +13,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
     try {
         request.setCharacterEncoding("UTF-8");
 
-        // 建立数据库连接
+        //建立數據庫連接
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
@@ -25,17 +26,17 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         
         String email = request.getParameter("email");
 
-        // 检查数据库中是否已存在该邮箱
-        String checkSql = "SELECT password FROM Member WHERE email = ?";
+        // 檢查Email是否存在
+        String checkSql = "SELECT memberID FROM Member WHERE email = ?";
         stmt = con.prepareStatement(checkSql);
         stmt.setString(1, email);
         rs = stmt.executeQuery();
         if (rs.next()) {
             message = email + "已經註冊！";
         } else {
-            // 如果邮箱不存在，则进行注册
+            // 如果Email不存在則註冊
             String insertSql = "INSERT INTO Member (email,password,memberName,sex,phoneNumber,address,creditCard,lastLoginTime) VALUES (?,?,?,?,?,?,?,?)";
-            stmt = con.prepareStatement(insertSql);
+            stmt = con.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, email);
             stmt.setString(2, request.getParameter("password"));
             stmt.setString(3, request.getParameter("name"));
@@ -45,9 +46,21 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             stmt.setString(7, request.getParameter("creditCard"));
             stmt.setTimestamp(8, Timestamp.from(Instant.now()));
             stmt.executeUpdate();
+
+            // 獲取新用戶的ID
+            rs = stmt.getGeneratedKeys();
+            int userID = 0;
+            if (rs.next()) {
+                userID = rs.getInt(1);
+            }
+
+            // 將用戶ID存儲到 session 中
+			HttpSession session1 = request.getSession();
+            session1.setAttribute("userID", userID);
+
             message = email + "註冊成功！";
-            // 注册成功后重定向到登录页面
-            response.sendRedirect("logIn.jsp");
+            // 註冊成功後跳轉到登入介面
+            response.sendRedirect("user.jsp");
         }
     } catch (ClassNotFoundException | SQLException e) {
         message = "錯誤: " + e.toString();
@@ -61,7 +74,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         }
     }
 
-    // 输出消息
+    // 輸出訊息
     out.println(message);
 }
 %>

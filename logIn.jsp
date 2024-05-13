@@ -7,14 +7,13 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-
 // 檢查用戶是否已登錄，如果已登錄則重定向到用戶首頁
-session = request.getSession();
-if (session.getAttribute("userID") != null) {
+HttpSession session1 = request.getSession(true);
+if (session1.getAttribute("userID") != null) {
     response.sendRedirect("user.jsp");
     return;
 }
-
+out.println("Session ID: " + session1.getId());/////
 String message = "";
 
 // 處理用戶提交的登錄請求
@@ -43,7 +42,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             if (rs.next()) {
                 // 如果用戶存在，將用戶ID存儲在會話中
                 int memberID = rs.getInt("memberID");
-                session.setAttribute("userID", memberID);
+                session1.setAttribute("userID", memberID);
                 // 登錄成功後重定向到用戶首頁
                 response.sendRedirect("user.jsp");
                 return;

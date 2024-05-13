@@ -3,16 +3,18 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.time.Instant" %>
 <%@ page import="javax.servlet.http.*" %>
+
 <%
 // 檢查用戶是否已登錄，如果未登錄則重定向到登錄頁面
-session = request.getSession();
-if (session.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp");
+HttpSession session1 = request.getSession();
+if (session1.getAttribute("userID") == null) {
+    response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
     return;
 }
+out.println("Session ID: " + session1.getId());/////
 
 // 用戶已登錄，獲取用戶ID
-int userID = (int) session.getAttribute("userID");
+int userID = (int) session1.getAttribute("userID");
 
 // 從資料庫中獲取用戶信息
 String userName = "";
@@ -61,20 +63,20 @@ try {
 <body>
     <h1>歡迎您，<%= userName %></h1>
     <p>您的用戶ID是： <%= userID %></p>
-    <p>您的郵箱是： <%= email %></p>
+    <p>您的Email是： <%= email %></p>
     
-    <form id="logoutForm" method="post">
-        <input type="submit" value="登出">
-    </form>
+    <!-- 直接連結到商店頁面 -->
+    <p><a id="storeLink" href="store.jsp">進入商店</a></p>
+    
+    <!-- 登出按鈕 -->
+    <button id="logoutButton">登出</button>
     
     <script>
-    document.getElementById("logoutForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // 阻止表單提交
-        // 清除會話信息
-        <% session.invalidate(); %>
+    // 定義登出函數
+    document.getElementById("logoutButton").addEventListener("click", function() {
         // 跳轉至登錄頁面
-        window.location.href = "logIn.jsp";
+        window.location.href = "logOut.jsp";
     });
-</script>
+    </script>
 </body>
 </html>
