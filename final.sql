@@ -56,7 +56,7 @@ CREATE TABLE `Cart` (
     memberId INT(8),
 	itemId INT(8),
 	quantity INT,
-    PRIMARY KEY (memberId)
+    PRIMARY KEY (memberId,itemId)
 );
 DROP TABLE IF EXISTS `Comment`;
 CREATE TABLE `Comment` (  

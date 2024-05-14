@@ -59,7 +59,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             session1.setAttribute("userID", userID);
 
             message = email + "註冊成功！";
-            // 註冊成功後跳轉到登入介面
+            // 註冊成功後跳轉到用戶介面
             response.sendRedirect("user.jsp");
         }
     } catch (ClassNotFoundException | SQLException e) {

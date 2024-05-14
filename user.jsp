@@ -11,7 +11,7 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
     return;
 }
-out.println("Session ID: " + session1.getId());/////
+out.println("Session ID: " + session1.getId());//除錯用顯示session1
 
 // 用戶已登錄，獲取用戶ID
 int userID = (int) session1.getAttribute("userID");

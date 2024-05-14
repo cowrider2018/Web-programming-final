@@ -13,7 +13,7 @@ if (session1.getAttribute("userID") != null) {
     response.sendRedirect("user.jsp");
     return;
 }
-out.println("Session ID: " + session1.getId());/////
+out.println("Session ID: " + session1.getId());//除錯用顯示session1
 String message = "";
 
 // 處理用戶提交的登錄請求
