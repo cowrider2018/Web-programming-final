@@ -3,6 +3,9 @@
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
@@ -60,8 +63,8 @@ try {
 </head>
 <body>
     <h1>購物車</h1>
-	<p><a id="storeLink" href="user.jsp">回到用戶頁面</a></p>
-	<p><a id="storeLink" href="store.jsp">回到商店</a></p>
+	<p><a href="user.jsp">回到用戶頁面</a></p>
+	<p><a href="store.jsp">回到商店</a></p>
     <table border="1">
         <tr>
             <th>商品ID</th>

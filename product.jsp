@@ -4,12 +4,16 @@
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 // 獲取商品ID
 String itemId = request.getParameter("itemId");
 // 將itemId存儲到會話中

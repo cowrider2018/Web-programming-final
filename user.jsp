@@ -3,8 +3,10 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.time.Instant" %>
 <%@ page import="javax.servlet.http.*" %>
-
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
@@ -62,8 +64,8 @@ try {
     <h1>歡迎您，<%= userName %></h1>
     <p>您的用戶ID是： <%= userID %></p>
     <p>您的Email是： <%= email %></p>
-    <p><a id="storeLink" href="store.jsp">進入商店</a></p>
-	<p><a id="storeLink" href="cart.jsp">查看購物車</a></p>
+    <p><a href="store.jsp">進入商店</a></p>
+	<p><a href="cart.jsp">查看購物車</a></p>
     <button id="logoutButton">登出</button>
     <script>
     document.getElementById("logoutButton").addEventListener("click", function() {

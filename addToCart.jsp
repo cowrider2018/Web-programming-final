@@ -2,6 +2,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 // 獲取參數
 String itemId = request.getParameter("itemId");
 int memberId = Integer.parseInt(request.getParameter("memberId"));

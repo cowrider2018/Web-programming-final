@@ -3,14 +3,17 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
-
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 // 獲取商品列表
 List<Map<String, String>> itemList = new ArrayList<>();
 Connection con = null;
@@ -52,7 +55,7 @@ try {
 </head>
 <body>
     <h1>商品列表</h1>
-	<p><a id="storeLink" href="user.jsp">回到用戶頁面</a></p>
+	<p><a href="user.jsp">回到用戶頁面</a></p>
     <% for (Map<String, String> item : itemList) { %>
         <div class="item">
             <img src="productsImg/<%= item.get("itemId") %>.jpg" alt="商品圖片" width="100" height="100"><br>

@@ -3,12 +3,16 @@
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
+request.setCharacterEncoding("UTF-8");
+
 // 如果未登入，重新導向至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 String url=null;
 // 獲取會員ID
 int memberId = (int) session1.getAttribute("userID");
