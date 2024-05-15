@@ -3,7 +3,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
-
 <%
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
@@ -11,22 +10,18 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
-
 // 獲取商品ID
 String itemId = request.getParameter("itemId");
 // 將itemId存儲到會話中
 session1.setAttribute("itemId", itemId);
-
 // 獲取商品信息
 String itemName = "";
 int itemPrice = 0;
 int itemQuantity = 0; // 商品庫存量
-
 // 獲取資料庫連接
 Connection con = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-
 try {
     Class.forName("com.mysql.jdbc.Driver");
     String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
@@ -67,7 +62,6 @@ try {
     <p>商品名稱： <%= itemName %></p>
     <p>商品價格： <%= itemPrice %> 元</p>
     <p>商品庫存： <%= itemQuantity %> 件</p>
-    
     <form action="addToCart.jsp" method="post">
         <input type="hidden" name="itemId" value="<%= itemId %>">
         <input type="hidden" name="memberId" value="<%= request.getSession().getAttribute("userID") %>">
