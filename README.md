@@ -25,7 +25,6 @@ session、mysql 、html form的資料名稱統一（以mysql為主）
 
 #cart.jsp
 商品總價、購物車總價等詳細資訊還沒做
-商品數量編輯功能0
 下單功能0
 
 #logOut.jsp、addToCart.jsp
