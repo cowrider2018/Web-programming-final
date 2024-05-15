@@ -65,7 +65,7 @@ try {
     <h1>商品詳情</h1>
     <p>商品名稱： <%= itemName %></p>
     <p>商品價格： <%= itemPrice %> 元</p>
-    <p>商品庫存量： <%= itemQuantity %></p>
+    <p>商品庫存： <%= itemQuantity %> 件</p>
     
     <!-- 計數器 -->
     <form action="addToCart.jsp" method="post">

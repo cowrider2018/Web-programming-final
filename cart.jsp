@@ -89,6 +89,11 @@ try {
             </td>
         </tr>
         <% } %>
+		
     </table>
+	<!-- 下單功能表單 -->
+		<form action="order.jsp" method="post">
+			<button type="submit">去下單</button>
+		</form>
 </body>
 </html>
