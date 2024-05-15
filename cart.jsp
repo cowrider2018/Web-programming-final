@@ -4,6 +4,11 @@
 <%@ page import="java.util.*" %>
 
 <%
+HttpSession session1 = request.getSession();
+if (session1.getAttribute("userID") == null) {
+    response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
+    return;
+}
 // 獲取會員ID
 int memberId = (int) request.getSession().getAttribute("userID");
 
@@ -53,6 +58,8 @@ try {
 </head>
 <body>
     <h1>購物車</h1>
+	<p><a id="storeLink" href="user.jsp">回到用戶頁面</a></p>
+	<p><a id="storeLink" href="store.jsp">回到商店</a></p>
     <table border="1">
         <tr>
             <th>商品ID</th>
@@ -66,6 +73,20 @@ try {
             <td><%= item.get("itemName") %></td>
             <td><%= item.get("price") %></td>
             <td><%= item.get("quantity") %></td>
+			<td>
+                <!-- 表單開始 -->
+                <form action="updateCart.jsp" method="post">
+                    <!-- 隱藏欄位用於傳遞商品ID -->
+                    <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
+                    <!-- 顯示商品數量 -->
+                    <%= item.get("quantity") %>
+                    <!-- 減少數量按鈕 -->
+                    <button type="submit" name="action" value="decrease">-</button>
+                    <!-- 增加數量按鈕 -->
+                    <button type="submit" name="action" value="increase">+</button>
+                </form>
+                <!-- 表單結束 -->
+            </td>
         </tr>
         <% } %>
     </table>

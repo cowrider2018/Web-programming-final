@@ -61,6 +61,7 @@ try {
 </head>
 <body>
     <h1>商品列表</h1>
+	<p><a id="storeLink" href="user.jsp">回到用戶頁面</a></p>
     <% for (Map<String, String> item : itemList) { %>
         <div class="item">
             <img src="productsImg/<%= item.get("itemId") %>.jpg" alt="商品图片" width="100" height="100"><br>
