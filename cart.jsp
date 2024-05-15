@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
-
 <%
 //檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
@@ -10,7 +9,6 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
-
 // 獲取會員ID
 int memberId = (int) request.getSession().getAttribute("userID");
 // 獲取購物車中的商品列表
@@ -72,15 +70,13 @@ try {
             <th>數量</th>
             <th>總計</th> 
         </tr>
-        <% 
-        for (Map<String, String> item : cartItems) { 
-        %>
+        <%for (Map<String, String> item : cartItems) {%>
         <tr>
             <td><%= item.get("itemId") %></td>
             <td><%= item.get("itemName") %></td>
             <td><%= item.get("price") %></td>
             <td><%= item.get("quantity") %></td>
-            <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td> <!-- 計算並顯示每個商品的總價 -->
+            <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td>
 			<td>
                 <form action="updateCart.jsp" method="post">
                     <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
@@ -96,18 +92,13 @@ try {
             <td><%= totalPrice %></td>
         </tr>
     </table>
-		<!-- 顯示庫存不足的警告 -->
+	<!-- 顯示庫存不足的警告 -->
     <% if (session.getAttribute("insufficientStock") != null && (boolean) session.getAttribute("insufficientStock")) { %>
         <script>
             alert("庫存不足，將為您修改購物車內容。");
         </script>
         <% session.removeAttribute("insufficientStock"); %>
     <% } %>
-
-    <!-- 購物車內容 -->
-    <!-- Add your cart content here -->
-
-    <!-- 跳轉至 checkCartQuantity.jsp -->
     <form action="order.jsp" method="post">
         <button type="submit">去下單</button>
     </form>

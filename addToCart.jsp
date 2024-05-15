@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
-
 <%
 // 獲取參數
 String itemId = request.getParameter("itemId");

@@ -56,7 +56,6 @@ try {
     }
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -68,7 +67,6 @@ try {
     <p>商品價格： <%= itemPrice %> 元</p>
     <p>商品庫存： <%= itemQuantity %> 件</p>
     
-    <!-- 計數器 -->
     <form action="addToCart.jsp" method="post">
         <input type="hidden" name="itemId" value="<%= itemId %>">
         <input type="hidden" name="memberId" value="<%= request.getSession().getAttribute("userID") %>">

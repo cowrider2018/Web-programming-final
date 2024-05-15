@@ -53,7 +53,6 @@ try {
     }
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -63,18 +62,11 @@ try {
     <h1>歡迎您，<%= userName %></h1>
     <p>您的用戶ID是： <%= userID %></p>
     <p>您的Email是： <%= email %></p>
-    
-    <!-- 直接連結到商店頁面 -->
     <p><a id="storeLink" href="store.jsp">進入商店</a></p>
 	<p><a id="storeLink" href="cart.jsp">查看購物車</a></p>
-    
-    <!-- 登出按鈕 -->
     <button id="logoutButton">登出</button>
-    
     <script>
-    // 定義登出函數
     document.getElementById("logoutButton").addEventListener("click", function() {
-        // 跳轉至登錄頁面
         window.location.href = "logOut.jsp";
     });
     </script>

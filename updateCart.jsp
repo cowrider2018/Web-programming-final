@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
-
 <%
 // 獲取用戶的動作和商品ID
 String action = request.getParameter("action");
@@ -53,7 +52,6 @@ try {
         e.printStackTrace();
     }
 }
-
 // 返回購物車頁面
 response.sendRedirect("cart.jsp");
 %>

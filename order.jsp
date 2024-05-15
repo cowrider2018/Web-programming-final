@@ -9,23 +9,18 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
-
 String url=null;
-
 // 獲取會員ID
 int memberId = (int) session1.getAttribute("userID");
-
 // 獲取會員資料
 String memberName = "";
 String address = "";
 String phoneNumber = "";
 String creditCard = ""; // 信用卡號碼
 boolean insufficientStock = false;
-
 Connection con = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-
 try {
     Class.forName("com.mysql.jdbc.Driver");
     url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
@@ -52,11 +47,9 @@ try {
         stmt = con.prepareStatement(sql);
         stmt.setInt(1, memberId);
         rs = stmt.executeQuery();
-
         while (rs.next()) {
             int cartQuantity = rs.getInt("quantity");
             int stockQuantity = rs.getInt("stock");
-
             // 如果購物車中的數量大於庫存，則更新購物車中的數量為庫存量
             if (cartQuantity > stockQuantity) {
                 insufficientStock = true;
@@ -79,21 +72,18 @@ try {
         e.printStackTrace();
     }
 }
-
 // 如果庫存不足，則重新導向回購物車頁面並顯示警告訊息
 if (insufficientStock) {
     session1.setAttribute("insufficientStock", true);
     response.sendRedirect("cart.jsp");
     return;
 }
-
 // 將信用卡號碼僅顯示後四碼
 String maskedCreditCard = "";
 if (creditCard != null && creditCard.length() > 4) {
     maskedCreditCard = "**** **** **** " + creditCard.substring(creditCard.length() - 4);
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -105,8 +95,6 @@ if (creditCard != null && creditCard.length() > 4) {
     <p>送件地址: <%= address %></p>
     <p>手機號碼: <%= phoneNumber %></p>
     <p>信用卡: <%= maskedCreditCard %></p>
-    
-    <!-- 購物車內容 -->
     <h2>訂單明細</h2>
     <table border="1">
         <tr>
@@ -114,7 +102,7 @@ if (creditCard != null && creditCard.length() > 4) {
             <th>商品名稱</th>
             <th>單價</th>
             <th>數量</th>
-            <th>總計</th> <!-- 新增總價欄位 -->
+            <th>總計</th>
         </tr>
         <% 
         // 獲取購物車中的商品列表和總價
@@ -162,16 +150,15 @@ if (creditCard != null && creditCard.length() > 4) {
             <td><%= item.get("itemName") %></td>
             <td><%= item.get("price") %></td>
             <td><%= item.get("quantity") %></td>
-            <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td> <!-- 計算並顯示每個商品的總價 -->
+            <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td>
         </tr>
         <% } %>
         <tr>
             <td colspan="4">總計</td>
-            <td><%= totalPrice %></td> <!-- 顯示總價 -->
+            <td><%= totalPrice %></td>
         </tr>
     </table>
-    
-    <form action="sendEmail.jsp" method="post">
+    <form action="" method="post">
         <button type="submit">送出</button>
     </form>
 </body>

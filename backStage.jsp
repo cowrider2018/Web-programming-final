@@ -2,7 +2,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.time.Instant" %>
-
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -67,7 +66,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
     }
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">

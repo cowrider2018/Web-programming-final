@@ -71,7 +71,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
     out.println(message);
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
