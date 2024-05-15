@@ -4,20 +4,21 @@
 <%@ page import="java.util.*" %>
 
 <%
+//檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
+    response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 // 獲取會員ID
 int memberId = (int) request.getSession().getAttribute("userID");
-
 // 獲取購物車中的商品列表
 List<Map<String, String>> cartItems = new ArrayList<>();
 Connection con = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-
+double totalPrice = 0.0;
 try {
     Class.forName("com.mysql.jdbc.Driver");
     String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
@@ -36,6 +37,10 @@ try {
             item.put("price", rs.getString("price"));
             item.put("quantity", rs.getString("quantity"));
             cartItems.add(item);
+			// 獲取購物車中的商品列表和總價
+			double itemPrice = Double.parseDouble(rs.getString("price"));
+			int itemQuantity = Integer.parseInt(rs.getString("quantity"));
+			totalPrice += itemPrice * itemQuantity;
         }
     }
 } catch (ClassNotFoundException | SQLException e) {
@@ -50,7 +55,6 @@ try {
     }
 }
 %>
-
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -64,34 +68,34 @@ try {
         <tr>
             <th>商品ID</th>
             <th>商品名稱</th>
-            <th>價格</th>
+            <th>單價</th>
             <th>數量</th>
+            <th>總計</th> 
         </tr>
-        <% for (Map<String, String> item : cartItems) { %>
+        <% 
+        for (Map<String, String> item : cartItems) { 
+        %>
         <tr>
             <td><%= item.get("itemId") %></td>
             <td><%= item.get("itemName") %></td>
             <td><%= item.get("price") %></td>
             <td><%= item.get("quantity") %></td>
+            <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td> <!-- 計算並顯示每個商品的總價 -->
 			<td>
-                <!-- 表單開始 -->
                 <form action="updateCart.jsp" method="post">
-                    <!-- 隱藏欄位用於傳遞商品ID -->
                     <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
-                    <!-- 顯示商品數量 -->
                     <%= item.get("quantity") %>
-                    <!-- 減少數量按鈕 -->
                     <button type="submit" name="action" value="decrease">-</button>
-                    <!-- 增加數量按鈕 -->
                     <button type="submit" name="action" value="increase">+</button>
                 </form>
-                <!-- 表單結束 -->
             </td>
         </tr>
         <% } %>
-		
+        <tr>
+            <td colspan="4">總計</td>
+            <td><%= totalPrice %></td>
+        </tr>
     </table>
-	<!-- 下單功能表單 -->
 		<form action="order.jsp" method="post">
 			<button type="submit">去下單</button>
 		</form>

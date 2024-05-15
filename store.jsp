@@ -5,12 +5,13 @@
 <%@ page import="java.util.*" %>
 
 <%
-// 檢查用戶是否已登錄，如果未登錄則重定向到登錄頁面
+//檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
+    response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 // 获取商品列表
 List<Map<String, String>> itemList = new ArrayList<>();
 Connection con = null;

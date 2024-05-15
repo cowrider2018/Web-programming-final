@@ -35,7 +35,6 @@ try {
             stmt.setInt(1, memberId);
             stmt.setInt(2, itemId);
             stmt.executeUpdate();
-
             // 如果商品數量減少到1，則從購物車中刪除該商品
             String deleteSql = "DELETE FROM Cart WHERE memberId = ? AND itemId = ? AND quantity = 0";
             stmt = con.prepareStatement(deleteSql);

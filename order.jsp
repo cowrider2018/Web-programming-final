@@ -4,12 +4,13 @@
 <%@ page import="java.util.*" %>
 
 <%
-// 確認是否已登入，若未登入則重定向至登入頁面
+//檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp");
+    response.sendRedirect("logIn.jsp"); 
     return;
 }
+
 String url=null;
 
 // 獲取會員ID

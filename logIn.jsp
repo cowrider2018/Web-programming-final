@@ -6,15 +6,17 @@
 <%@ page import="java.time.Instant" %>
 
 <%
+//不知道為什麼編碼出問題所以加了編碼設定
 request.setCharacterEncoding("UTF-8");
-// 檢查用戶是否已登錄，如果已登錄則重定向到用戶首頁
+
+//檢查是否登入，是則跳轉至用戶頁面
 HttpSession session1 = request.getSession(true);
 if (session1.getAttribute("userID") != null) {
     response.sendRedirect("user.jsp");
     return;
 }
-String message = "";
 
+String message = "";
 // 處理用戶提交的登錄請求
 if ("POST".equalsIgnoreCase(request.getMethod())) {
     Connection con = null;
@@ -25,10 +27,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
-        if (con.isClosed()) {
-            message = "連接建立失敗";
-        } else {
-            String email = request.getParameter("email");
+        String email = request.getParameter("email");
             String password = request.getParameter("password");
 
             // 查詢用戶是否存在
@@ -48,7 +47,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             } else {
                 message = "用戶名或密碼錯誤";
             }
-        }
     } catch (ClassNotFoundException | SQLException e) {
         message = "錯誤: " + e.toString();
     } finally {

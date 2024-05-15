@@ -3,12 +3,6 @@
 <%@ page import="javax.servlet.http.*" %>
 
 <%
-// 檢查用戶是否已登錄，如果未登錄則重定向到登錄頁面
-HttpSession session1 = request.getSession();
-if (session1.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
-    return;
-}
 // 獲取參數
 String itemId = request.getParameter("itemId");
 int memberId = Integer.parseInt(request.getParameter("memberId"));
