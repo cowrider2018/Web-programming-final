@@ -11,7 +11,6 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
     return;
 }
-out.println("Session ID: " + session1.getId());//除錯用顯示session1
 // 获取商品列表
 List<Map<String, String>> itemList = new ArrayList<>();
 Connection con = null;

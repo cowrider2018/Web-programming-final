@@ -17,12 +17,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
-        if (con.isClosed()) {
-            message = "連線建立失敗";
-        } else {
-            out.println("連線成功");
-            out.println(request.getParameter("name"));
-        }
         
         String email = request.getParameter("email");
 
@@ -63,7 +57,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             response.sendRedirect("user.jsp");
         }
     } catch (ClassNotFoundException | SQLException e) {
-        message = "錯誤: " + e.toString();
+        out.println("SQL錯誤: " + e.toString());
     } finally {
         try {
             if (rs != null) rs.close();
@@ -104,5 +98,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         <input type="text" value="12345678901234" name="creditCard">
         <p><input type="submit" value="提交"><input type="reset" value="重置">
     </form>
+	<p>已有帳號?<a id="storeLink" href="logIn.jsp">登入</a></p>
 </body>
 </html>

@@ -55,7 +55,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             out.println("商品上架成功");
         }
     } catch (ClassNotFoundException | SQLException e) {
-        out.println("錯誤: " + e.toString());
+        out.println("SQL錯誤: " + e.toString());
     } finally {
         try {
             if (rs != null) rs.close();

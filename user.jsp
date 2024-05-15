@@ -11,7 +11,6 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
     return;
 }
-out.println("Session ID: " + session1.getId());//除錯用顯示session1
 
 // 用戶已登錄，獲取用戶ID
 int userID = (int) session1.getAttribute("userID");
@@ -67,6 +66,7 @@ try {
     
     <!-- 直接連結到商店頁面 -->
     <p><a id="storeLink" href="store.jsp">進入商店</a></p>
+	<p><a id="storeLink" href="cart.jsp">查看購物車</a></p>
     
     <!-- 登出按鈕 -->
     <button id="logoutButton">登出</button>

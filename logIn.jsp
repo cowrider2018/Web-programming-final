@@ -13,7 +13,6 @@ if (session1.getAttribute("userID") != null) {
     response.sendRedirect("user.jsp");
     return;
 }
-out.println("Session ID: " + session1.getId());//除錯用顯示session1
 String message = "";
 
 // 處理用戶提交的登錄請求
@@ -76,5 +75,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         <p>密碼：<input type="password" value="password1234" name="password"></p>
         <p><input type="submit" value="登錄"><input type="reset" value="重置"></p>
     </form>
+	<p>沒有帳號?<a id="storeLink" href="signIn.jsp">註冊</a></p>
 </body>
 </html>

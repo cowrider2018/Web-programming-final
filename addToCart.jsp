@@ -9,7 +9,6 @@ if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); // 重定向至登錄頁面
     return;
 }
-out.println("Session ID: " + session1.getId());//除錯用顯示session1
 // 獲取參數
 String itemId = request.getParameter("itemId");
 int memberId = Integer.parseInt(request.getParameter("memberId"));
