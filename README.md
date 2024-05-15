@@ -17,15 +17,14 @@
 
 #*
 session、mysql 、html form的資料名稱統一（以mysql為主）
-測試過沒問題的try可以刪除(目前完成)
-除錯用的反饋資訊沒有刪除（session資訊、連線成功資訊）
+除錯用的反饋資訊沒有刪除(目前完成)
 
 #backstage.jsp
 商品圖片是itemId同名的jpg (ex:10000001.jpg），上架的時候不上傳新圖片，而是手動改圖片名丟進productsImg資料夾，考慮修改
 業者驗證功能0，也許保留memberId10000000當業者專屬帳號
 
 #cart.jsp
-下單後訂單送出與後續功能未完成(訂單要送去哪?)
+下單後訂單送出與後續功能未完成(訂單要送去哪?用什麼形式儲存?Email信件?資料表?)
 
 #logOut.jsp、addToCart.jsp
 可以改成js（暫時不必要）
