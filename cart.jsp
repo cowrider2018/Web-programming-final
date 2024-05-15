@@ -96,8 +96,20 @@ try {
             <td><%= totalPrice %></td>
         </tr>
     </table>
-		<form action="order.jsp" method="post">
-			<button type="submit">去下單</button>
-		</form>
+		<!-- 顯示庫存不足的警告 -->
+    <% if (session.getAttribute("insufficientStock") != null && (boolean) session.getAttribute("insufficientStock")) { %>
+        <script>
+            alert("庫存不足，將為您修改購物車內容。");
+        </script>
+        <% session.removeAttribute("insufficientStock"); %>
+    <% } %>
+
+    <!-- 購物車內容 -->
+    <!-- Add your cart content here -->
+
+    <!-- 跳轉至 checkCartQuantity.jsp -->
+    <form action="order.jsp" method="post">
+        <button type="submit">去下單</button>
+    </form>
 </body>
 </html>

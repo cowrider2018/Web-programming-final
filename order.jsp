@@ -2,9 +2,8 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
-
 <%
-//檢查是否登入，否則跳轉至登錄頁面
+// 如果未登入，重新導向至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
@@ -21,6 +20,7 @@ String memberName = "";
 String address = "";
 String phoneNumber = "";
 String creditCard = ""; // 信用卡號碼
+boolean insufficientStock = false;
 
 Connection con = null;
 PreparedStatement stmt = null;
@@ -43,6 +43,31 @@ try {
             creditCard = rs.getString("creditCard");
         }
     }
+    Class.forName("com.mysql.jdbc.Driver");
+    con = DriverManager.getConnection(url, "root", "1234");
+
+    if (!con.isClosed()) {
+        // 查詢購物車中的商品信息以及庫存量
+        String sql = "SELECT Cart.itemId, Cart.quantity, Item.inventoryQuantity AS stock FROM Cart INNER JOIN Item ON Cart.itemId = Item.itemId WHERE Cart.memberId = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setInt(1, memberId);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            int cartQuantity = rs.getInt("quantity");
+            int stockQuantity = rs.getInt("stock");
+
+            // 如果購物車中的數量大於庫存，則更新購物車中的數量為庫存量
+            if (cartQuantity > stockQuantity) {
+                insufficientStock = true;
+                stmt = con.prepareStatement("UPDATE Cart SET quantity = ? WHERE memberId = ? AND itemId = ?");
+                stmt.setInt(1, stockQuantity);
+                stmt.setInt(2, memberId);
+                stmt.setInt(3, rs.getInt("itemId"));
+                stmt.executeUpdate();
+            }
+        }
+    }
 } catch (ClassNotFoundException | SQLException e) {
     e.printStackTrace();
 } finally {
@@ -53,6 +78,13 @@ try {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+}
+
+// 如果庫存不足，則重新導向回購物車頁面並顯示警告訊息
+if (insufficientStock) {
+    session1.setAttribute("insufficientStock", true);
+    response.sendRedirect("cart.jsp");
+    return;
 }
 
 // 將信用卡號碼僅顯示後四碼
