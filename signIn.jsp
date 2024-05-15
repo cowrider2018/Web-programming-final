@@ -18,9 +18,8 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
         String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
         
-        String email = request.getParameter("email");
-
         // 檢查Email是否存在
+		String email = request.getParameter("email");
         String checkSql = "SELECT memberID FROM Member WHERE email = ?";
         stmt = con.prepareStatement(checkSql);
         stmt.setString(1, email);

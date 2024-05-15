@@ -58,6 +58,7 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
             message = "關閉資源時出錯: " + e.toString();
         }
     }
+	out.println(message);
 }
 %>
 
@@ -67,7 +68,6 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
     <title>登錄</title>
 </head>
 <body>
-    <p><%= message %></p>
     <form method="POST" action="" accept-charset="UTF-8">
         <p>Email：<input type="email" value="cowrider2018@gmail.com" name="email"></p>
         <p>密碼：<input type="password" value="password1234" name="password"></p>
