@@ -80,8 +80,8 @@ try {
 			<td>
                 <form action="updateCart.jsp" method="post">
                     <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
-                    <%= item.get("quantity") %>
                     <button type="submit" name="action" value="decrease">-</button>
+                    <%= item.get("quantity") %>
                     <button type="submit" name="action" value="increase">+</button>
                 </form>
             </td>

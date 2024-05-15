@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 
 <%
-//檢查是否登入，否則跳轉至登錄頁面
+// 检查是否登录，否则跳转至登录页面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
@@ -51,24 +51,17 @@ try {
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>商品列表</title>
-    <style>
-        .item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body>
     <h1>商品列表</h1>
-	<p><a id="storeLink" href="user.jsp">回到用戶頁面</a></p>
+	<p><a id="storeLink" href="user.jsp">回到用户页面</a></p>
     <% for (Map<String, String> item : itemList) { %>
         <div class="item">
             <img src="productsImg/<%= item.get("itemId") %>.jpg" alt="商品图片" width="100" height="100"><br>
-            商品名稱：<%= item.get("itemName") %><br>
+            商品名称：<%= item.get("itemName") %><br>
             <form action="product.jsp" method="post">
                 <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
-                <input type="submit" value="進入商品頁面">
+                <input type="submit" value="进入商品页面">
             </form>
         </div>
     <% } %>

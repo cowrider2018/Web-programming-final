@@ -63,6 +63,7 @@ try {
 </head>
 <body>
     <h1>商品詳情</h1>
+	<img src="productsImg/<%=itemId%>.jpg" alt="商品圖片" width="100" height="100"><br>
     <p>商品名稱： <%= itemName %></p>
     <p>商品價格： <%= itemPrice %> 元</p>
     <p>商品庫存： <%= itemQuantity %> 件</p>
