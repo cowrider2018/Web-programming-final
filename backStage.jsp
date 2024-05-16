@@ -59,14 +59,17 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getP
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>後台管理</title>
     <script>
-        function confirmDelete() {
+        function confirmChange() {
+            return confirm("確定要修改嗎？");
+        }
+		function confirmDelete() {
             return confirm("確定要下架此商品嗎？");
         }
     </script>
 </head>
 <body>
     <h1>修改商品庫存數量</h1>
-    <form action="updateInventory.jsp" method="post">
+    <form action="updateInventory.jsp" method="post" onsubmit="return confirmChange();">
         <table border="1">
             <tr>
 				<th></th>
