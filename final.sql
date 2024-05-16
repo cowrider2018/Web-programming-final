@@ -25,16 +25,16 @@ CREATE TABLE `Item` (
     PRIMARY KEY (itemId)
 )AUTO_INCREMENT=10000000;
 DROP TABLE IF EXISTS `Type`;
-CREATE TABLE `Type` (  
-    typeId VARCHAR(8),
+CREATE TABLE `Type` (
+    typeId INT(8),
 	typeName VARCHAR(16),
-	itemId VARCHAR(8),
+	itemId INT(8),
     PRIMARY KEY (typeId)
 );
 DROP TABLE IF EXISTS `Order`;
-CREATE TABLE `Order` (  
-    orderId VARCHAR(8),
-	memberId VARCHAR(8),
+CREATE TABLE `Order` (
+    orderId INT(8) AUTO_INCREMENT,
+	memberId INT(8),
 	orderDate DATE,
 	paymentMethod VARCHAR(20),
 	paymentStatus CHAR(1),
@@ -43,11 +43,11 @@ CREATE TABLE `Order` (
 	orderStatus VARCHAR(20),
 	notes TEXT,
     PRIMARY KEY (orderId)
-);
+)AUTO_INCREMENT=10000000;
 DROP TABLE IF EXISTS `OrderDetails`;
-CREATE TABLE `OrderDetails` (  
-    orderId VARCHAR(8),
-	itemId VARCHAR(8),
+CREATE TABLE `OrderDetails` (
+    orderId INT(8),
+	itemId INT(8),
 	quantity INT,
     PRIMARY KEY (orderId,itemId)
 );
@@ -60,9 +60,9 @@ CREATE TABLE `Cart` (
 );
 DROP TABLE IF EXISTS `Comment`;
 CREATE TABLE `Comment` (  
-    commentId VARCHAR(8),
-	itemId VARCHAR(8),
-	memberId VARCHAR(8),
+    commentId INT(8),
+	itemId INT(8),
+	memberId INT(8),
 	score INT(1),
 	contents TEXT,
 	commentDate DATE,

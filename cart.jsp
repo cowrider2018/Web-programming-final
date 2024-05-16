@@ -3,45 +3,86 @@
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="java.util.*" %>
 <%
-//不知道為什麼編碼出問題所以加了編碼設定
 request.setCharacterEncoding("UTF-8");
 
-//檢查是否登入，否則跳轉至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
     return;
 }
-// 獲取會員ID
-int memberId = (int) request.getSession().getAttribute("userID");
-// 獲取購物車中的商品列表
-List<Map<String, String>> cartItems = new ArrayList<>();
+String paymentMethod = request.getParameter("paymentMethod");
+String url = null;
+int memberId = (int) session1.getAttribute("userID");
+String memberName = "";
+String address = "";
+String phoneNumber = "";
+String email = "";
+String creditCard = "";
+boolean insufficientStock = false;
 Connection con = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
+String maskedCreditCard = "";
+if (creditCard != null && creditCard.length() > 4) {
+    maskedCreditCard = "**** **** **** " + creditCard.substring(creditCard.length() - 4);
+}
+
+List<Map<String, String>> cartItems = new ArrayList<>();
 double totalPrice = 0.0;
 try {
     Class.forName("com.mysql.jdbc.Driver");
-    String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
+    url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
     con = DriverManager.getConnection(url, "root", "1234");
     if (!con.isClosed()) {
-        // 查詢購物車中的商品信息
         String sql = "SELECT Item.itemId, Item.itemName, Item.price, Cart.quantity FROM Item INNER JOIN Cart ON Item.itemId = Cart.itemId WHERE Cart.memberId = ?";
         stmt = con.prepareStatement(sql);
         stmt.setInt(1, memberId);
         rs = stmt.executeQuery();
         while (rs.next()) {
-            // 獲取商品信息
             Map<String, String> item = new HashMap<>();
             item.put("itemId", rs.getString("itemId"));
             item.put("itemName", rs.getString("itemName"));
             item.put("price", rs.getString("price"));
             item.put("quantity", rs.getString("quantity"));
             cartItems.add(item);
-			// 獲取購物車中的商品列表和總價
-			double itemPrice = Double.parseDouble(rs.getString("price"));
-			int itemQuantity = Integer.parseInt(rs.getString("quantity"));
-			totalPrice += itemPrice * itemQuantity;
+            double itemPrice = Double.parseDouble(rs.getString("price"));
+            int itemQuantity = Integer.parseInt(rs.getString("quantity"));
+            totalPrice += itemPrice * itemQuantity;
+        }
+    }
+    Class.forName("com.mysql.jdbc.Driver");
+    url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
+    con = DriverManager.getConnection(url, "root", "1234");
+    if (!con.isClosed()) {
+        String sql = "SELECT memberName, address, phoneNumber, email, creditCard FROM Member WHERE memberId = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setInt(1, memberId);
+        rs = stmt.executeQuery();
+        if (rs.next()) {
+            memberName = rs.getString("memberName");
+            address = rs.getString("address");
+            phoneNumber = rs.getString("phoneNumber");
+            email = rs.getString("email");
+            creditCard = rs.getString("creditCard");
+        }
+    }
+
+    if (!con.isClosed()) {
+        String sql = "SELECT Cart.itemId, Cart.quantity, Item.inventoryQuantity AS stock FROM Cart INNER JOIN Item ON Cart.itemId = Item.itemId WHERE Cart.memberId = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setInt(1, memberId);
+        rs = stmt.executeQuery();
+        while (rs.next()) {
+            int cartQuantity = rs.getInt("quantity");
+            int stockQuantity = rs.getInt("stock");
+            if (cartQuantity > stockQuantity) {
+                insufficientStock = true;
+                stmt = con.prepareStatement("UPDATE Cart SET quantity = ? WHERE memberId = ? AND itemId = ?");
+                stmt.setInt(1, stockQuantity);
+                stmt.setInt(2, memberId);
+                stmt.setInt(3, rs.getInt("itemId"));
+                stmt.executeUpdate();
+            }
         }
     }
 } catch (ClassNotFoundException | SQLException e) {
@@ -54,6 +95,12 @@ try {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+}
+
+if (insufficientStock) {
+    session1.setAttribute("insufficientStock", true);
+    response.sendRedirect("cart.jsp");
+    return;
 }
 %>
 <html>
@@ -103,6 +150,25 @@ try {
         <% session.removeAttribute("insufficientStock"); %>
     <% } %>
     <form action="order.jsp" method="post">
+        <!-- 將購物車中的商品列表作為表單字段傳遞 -->
+        <% for (Map<String, String> item : cartItems) { %>
+            <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
+            <input type="hidden" name="itemName" value="<%= item.get("itemName") %>">
+            <input type="hidden" name="price" value="<%= item.get("price") %>">
+            <input type="hidden" name="quantity" value="<%= item.get("quantity") %>">
+        <% } %>
+		<input type="hidden" name="memberId" value="<%= memberId %>">
+        <input type="hidden" name="memberName" value="<%= memberName %>">
+        <input type="hidden" name="address" value="<%= address %>">
+        <input type="hidden" name="phoneNumber" value="<%= phoneNumber %>">
+        <input type="hidden" name="email" value="<%= email %>">
+        <label for="paymentMethod">選擇付款方式：</label>
+        <select name="paymentMethod" id="paymentMethod" required>
+            <option value="">請選擇付款方式</option>
+            <option value="creditCard">信用卡付款</option>
+            <option value="cashOnDelivery">貨到付款</option>
+            <!-- 可以根據需要添加更多付款方式選項 -->
+        </select>
         <button type="submit">去下單</button>
     </form>
 </body>
