@@ -133,12 +133,22 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getP
     </form>
 	<h1>上架新品</h1>
     <form id="launch" method="POST" action="" accept-charset="UTF-8">
+	<table border="1">
         <input type="hidden" name="formId" value="launch">
-        <p>商品名稱：<input type="text" value="海洛因" name="name"></p>
-        <p>商品敘述：<input type="text" value="這批很純" name="description"></p>
-        <p>價格：<input type="text" value="15" name="price"></p>
-        <p>數量：<input type="text" value="5" name="quantity"></p>
-        <p><input type="submit" value="上架"><input type="reset" value="取消"></p>
+        <tr>
+			<th>商品名稱</th>
+			<th>商品敘述</th>
+			<th>價格</th>
+			<th>數量</th>
+		</tr>
+        <tr>
+			<td><input type="text" value="無盡之刃" name="name"></td>
+			<td><input type="text" value="爆擊傷害+50%" name="description"></td>
+			<td><input type="text" value="3400.0" name="price"></td>
+			<td><input type="text" value="5" name="quantity"></td>
+		</tr>
+	</table>
+	<input type="submit" value="上架"><input type="reset" value="取消">
     </form>
 </body>
 </html>
