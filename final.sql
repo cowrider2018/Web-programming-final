@@ -40,7 +40,7 @@ CREATE TABLE `Order` (
 	paymentStatus CHAR(1),
 	address TEXT,
 	totalPrice DECIMAL(10, 2),
-	orderStatus VARCHAR(20),
+	orderStatus CHAR(1),
 	notes TEXT,
     PRIMARY KEY (orderId)
 )AUTO_INCREMENT=10000000;

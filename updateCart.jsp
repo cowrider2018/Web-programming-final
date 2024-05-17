@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%
-//不知道為什麼編碼出問題所以加了編碼設定
 request.setCharacterEncoding("UTF-8");
 
 // 獲取用戶的動作和商品ID

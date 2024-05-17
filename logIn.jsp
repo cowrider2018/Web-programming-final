@@ -5,10 +5,7 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.time.Instant" %>
 <%
-//不知道為什麼編碼出問題所以加了編碼設定
 request.setCharacterEncoding("UTF-8");
-
-//檢查是否登入，是則跳轉至用戶頁面
 HttpSession session1 = request.getSession(true);
 if (session1.getAttribute("userID") != null) {
     response.sendRedirect("user.jsp");

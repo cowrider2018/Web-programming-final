@@ -4,8 +4,6 @@
 <%@ page import="java.util.*" %>
 <%
 request.setCharacterEncoding("UTF-8");
-
-// 如果未登入，重新導向至登錄頁面
 HttpSession session1 = request.getSession();
 if (session1.getAttribute("userID") == null) {
     response.sendRedirect("logIn.jsp"); 
@@ -58,6 +56,7 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getP
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>後台管理</title>
+	<p><a href="sellerViewOrder.jsp">查看訂單</a></p>
     <script>
         function confirmChange() {
             return confirm("確定要修改嗎？");
@@ -145,9 +144,9 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getP
 			<th>數量</th>
 		</tr>
         <tr>
-			<td><input type="text" value="無盡之刃" name="name"></td>
-			<td><input type="text" value="爆擊傷害+50%" name="description"></td>
-			<td><input type="text" value="3400.0" name="price"></td>
+			<td><input type="text" value="大麻" name="name"></td>
+			<td><input type="text" value="呵呵呵呵呵呵" name="description"></td>
+			<td><input type="text" value="3000.0" name="price"></td>
 			<td><input type="text" value="5" name="quantity"></td>
 		</tr>
 	</table>
