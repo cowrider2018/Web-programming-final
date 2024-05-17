@@ -111,7 +111,7 @@ try {
     }
     %>
 
-    <p><a href="user.jsp">返回用戶首頁</a></p>
+    <p><a href="backStage.jsp">返回商家後台</a></p>
 </body>
 </html>
 

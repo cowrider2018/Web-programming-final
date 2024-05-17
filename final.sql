@@ -22,15 +22,18 @@ CREATE TABLE `Item` (
 	picture TEXT,
 	price DECIMAL(10, 2),
 	inventoryQuantity INT,
+    typeId INT(1),
     PRIMARY KEY (itemId)
 )AUTO_INCREMENT=10000000;
 DROP TABLE IF EXISTS `Type`;
 CREATE TABLE `Type` (
-    typeId INT(8),
+    typeId INT(1),
 	typeName VARCHAR(16),
-	itemId INT(8),
-    PRIMARY KEY (itemId)
+    PRIMARY KEY (typeId)
 );
+INSERT INTO Type (typeId,typeName) VALUES (1,"戒指");
+INSERT INTO Type (typeId,typeName) VALUES (2,"項鍊");
+INSERT INTO Type (typeId,typeName) VALUES (3,"耳環");
 DROP TABLE IF EXISTS `Order`;
 CREATE TABLE `Order` (
     orderId INT(8) AUTO_INCREMENT,

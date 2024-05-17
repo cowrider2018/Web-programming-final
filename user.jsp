@@ -11,10 +11,7 @@ if (session1.getAttribute("userID") == null) {
     return;
 }
 
-// 用戶已登錄，獲取用戶ID
 int userID = (int) session1.getAttribute("userID");
-
-// 從資料庫中獲取用戶信息
 String userName = "";
 String email = "";
 
@@ -27,30 +24,38 @@ try {
     String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
     con = DriverManager.getConnection(url, "root", "1234");
     if (con.isClosed()) {
-        // 處理連接失敗情況
     } else {
-        // 查詢用戶信息
         String sql = "SELECT memberName, email FROM Member WHERE memberID = ?";
         stmt = con.prepareStatement(sql);
         stmt.setInt(1, userID);
         rs = stmt.executeQuery();
         if (rs.next()) {
-            // 如果找到用戶信息，從結果集中獲取用戶名和郵箱
             userName = rs.getString("memberName");
             email = rs.getString("email");
         }
     }
 } catch (ClassNotFoundException | SQLException e) {
-    // 處理資料庫異常
 } finally {
     try {
         if (rs != null) rs.close();
         if (stmt != null) stmt.close();
         if (con != null) con.close();
     } catch (SQLException e) {
-        // 處理關閉資源異常
     }
 }
+int counter=0;
+String strNo="";
+if (application.getAttribute("counter")==null){
+    application.setAttribute("counter", "100");
+}
+else{
+	strNo = (String)application.getAttribute("counter");
+	counter = Integer.parseInt(strNo);
+	if (session.isNew())
+		counter++;
+	strNo = String.valueOf(counter);
+	application.setAttribute("counter", strNo);
+}	 
 %>
 <html>
 <head>
@@ -70,5 +75,6 @@ try {
         window.location.href = "logOut.jsp";
     });
     </script>
+	您是第<%= counter %>位訪客
 </body>
 </html>
