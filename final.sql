@@ -29,7 +29,7 @@ CREATE TABLE `Type` (
     typeId INT(8),
 	typeName VARCHAR(16),
 	itemId INT(8),
-    PRIMARY KEY (typeId)
+    PRIMARY KEY (itemId)
 );
 DROP TABLE IF EXISTS `Order`;
 CREATE TABLE `Order` (
