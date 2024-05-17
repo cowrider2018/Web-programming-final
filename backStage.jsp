@@ -198,5 +198,6 @@ if("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getPa
         <input type="submit" value="下架">
         <input type="reset" value="取消">
     </form>
+	<p><a href="sellerViewOrder.jsp">查看訂單</a></p>
 </body>
 </html>
