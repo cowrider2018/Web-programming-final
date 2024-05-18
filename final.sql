@@ -63,11 +63,11 @@ CREATE TABLE `Cart` (
 );
 DROP TABLE IF EXISTS `Comment`;
 CREATE TABLE `Comment` (  
-    commentId INT(8),
+    commentId INT(8) AUTO_INCREMENT,
 	itemId INT(8),
 	memberId INT(8),
 	score INT(1),
 	contents TEXT,
 	commentDate DATE,
     PRIMARY KEY (commentId)
-);
+)AUTO_INCREMENT=10000000;
