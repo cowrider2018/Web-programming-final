@@ -124,6 +124,7 @@ try {
 </head>
 <body>
     <h1>商品詳情</h1>
+	<p><a href="store.jsp">回商店</a></p>
     <img src="productsImg/<%= itemId %>.jpg" alt="商品圖片" width="100" height="100"><br>
     <p>商品名稱： <%= itemName %></p>
     <p>商品簡介： <%= itemDescription %></p>
