@@ -32,10 +32,17 @@ try {
     con = DriverManager.getConnection(url, "root", "1234");
 
     if (!con.isClosed()) {
-        // Query for items of the selected type
-        sql = "SELECT i.itemId, i.itemName FROM Item i WHERE i.typeId = ?";
+        // Query for items of the selected type or all items if no specific type is selected
+        if (currentTypeId == null || currentTypeId.equals("all")) {
+            sql = "SELECT i.itemId, i.itemName FROM Item i";
+        } else {
+            sql = "SELECT i.itemId, i.itemName FROM Item i WHERE i.typeId = ?";
+        }
+
         stmt = con.prepareStatement(sql);
-        stmt.setString(1, currentTypeId);
+        if (currentTypeId != null && !currentTypeId.equals("all")) {
+            stmt.setString(1, currentTypeId);
+        }
         rs = stmt.executeQuery();
 
         while (rs.next()) {
@@ -45,14 +52,18 @@ try {
             itemList.add(item);
         }
 
-        // Query for the type name
-        sql = "SELECT typeName FROM Type WHERE typeId = ?";
-        stmt = con.prepareStatement(sql);
-        stmt.setString(1, currentTypeId);
-        rs = stmt.executeQuery();
+        // Query for the type name if a specific type is selected
+        if (currentTypeId != null && !currentTypeId.equals("all")) {
+            sql = "SELECT typeName FROM Type WHERE typeId = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, currentTypeId);
+            rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            typeName = rs.getString("typeName");
+            if (rs.next()) {
+                typeName = rs.getString("typeName");
+            }
+        } else {
+            typeName = "全部";
         }
     }
 } catch (ClassNotFoundException | SQLException e) {
@@ -93,6 +104,7 @@ try {
     <h1>商品列表</h1>
     <p><a href="user.jsp">回到用戶頁面</a></p>
     <div>
+        <a href="store.jsp?typeId=all">全部</a>
         <a href="store.jsp?typeId=1">戒指</a>
         <a href="store.jsp?typeId=2">項鍊</a>
         <a href="store.jsp?typeId=3">耳環</a>
