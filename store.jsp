@@ -97,7 +97,7 @@ try {
         <a href="store.jsp?typeId=2">項鍊</a>
         <a href="store.jsp?typeId=3">耳環</a>
     </div>
-    <h2>顯示類型: <%= typeName != null ? typeName : "所有類型" %></h2>
+    <h2>顯示類型: <%= typeName != null ? typeName : "無" %></h2>
     <% for (Map<String, String> item : itemList) { %>
         <div class="item">
             <img src="productsImg/<%= item.get("itemId") %>.jpg" alt="商品圖片" width="100" height="100"><br>
