@@ -4,28 +4,29 @@
 <%@ page import="java.util.*" %>
 <%
 request.setCharacterEncoding("UTF-8");
+
+// 業者驗證
 HttpSession session1 = request.getSession();
-if (session1.getAttribute("userID") == null) {
-    response.sendRedirect("logIn.jsp"); 
+Integer userID = (Integer) session.getAttribute("userID");
+if (userID == null || userID != 10000000) {
+    response.sendRedirect("logIn.jsp");
     return;
 }
 
 Connection con = null;
 PreparedStatement stmt = null;
 PreparedStatement stmtType = null;
+PreparedStatement stmtSpec = null;
 ResultSet rs = null;
 ResultSet rsType = null;
+ResultSet rsSpec = null;
 String sql = null;
-String url = null;
-int updateAffected = 0;
-int launchAffected = 0;
-int removeAffected = 0;
+String url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
 
-// 查询 Type 表
+// 讀取types
 List<Map<String, String>> types = new ArrayList<>();
 try {
     Class.forName("com.mysql.jdbc.Driver");
-    url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
     con = DriverManager.getConnection(url, "root", "1234");
     String typeSql = "SELECT typeId, typeName FROM Type";
     stmtType = con.prepareStatement(typeSql);
@@ -44,61 +45,124 @@ try {
     if (con != null) con.close();
 }
 
-// 更新商品信息
+//更新
 if ("POST".equalsIgnoreCase(request.getMethod()) && "update".equals(request.getParameter("formId"))) {
     Enumeration<String> parameterNames = request.getParameterNames();
     while (parameterNames.hasMoreElements()) {
         String paramName = parameterNames.nextElement();
         if (paramName.startsWith("itemDescription_") || paramName.startsWith("price_") || paramName.startsWith("inventoryQuantity_")) {
-            String itemId = paramName.split("_")[1];
-            String itemName = request.getParameter("itemName_" + itemId);
-            String itemDescription = request.getParameter("itemDescription_" + itemId);
-            double price = Double.parseDouble(request.getParameter("price_" + itemId));
-            int inventoryQuantity = Integer.parseInt(request.getParameter("inventoryQuantity_" + itemId));
-            int typeId = Integer.parseInt(request.getParameter("type_" + itemId));
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
-                con = DriverManager.getConnection(url, "root", "1234");
-                sql = "UPDATE Item SET itemName=?, itemDescription=?, price=?, inventoryQuantity=?, typeId=? WHERE itemId=?";
-                stmt = con.prepareStatement(sql);
-                stmt.setString(1, itemName);
-                stmt.setString(2, itemDescription);
-                stmt.setDouble(3, price);
-                stmt.setInt(4, inventoryQuantity);
-                stmt.setInt(5, typeId);
-                stmt.setString(6, itemId);
-                stmt.executeUpdate();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (stmt != null) stmt.close();
-                if (con != null) con.close();
+            String[] paramParts = paramName.split("_");
+            if (paramParts.length >= 3) {
+                String itemId = paramParts[1];
+                String specId = paramParts[2];
+                String itemName = request.getParameter("itemName_" + itemId);
+                String itemDescription = request.getParameter("itemDescription_" + itemId);
+                double price = Double.parseDouble(request.getParameter("price_" + itemId));
+                int typeId = Integer.parseInt(request.getParameter("type_" + itemId));
+                String specName = request.getParameter("specName_" + itemId + "_" + specId);
+                String inventoryQuantityValue = request.getParameter("inventoryQuantity_" + itemId + "_" + specId);
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager.getConnection(url, "root", "1234");
+					sql = "UPDATE Spec SET specName=?, inventoryQuantity=? WHERE itemId=? AND specId=?";
+					stmt = con.prepareStatement(sql);
+					stmt.setString(1, specName);
+					stmt.setString(2, inventoryQuantityValue);
+					stmt.setString(3, itemId);
+					stmt.setString(4, specId);
+					stmt.executeUpdate();
+					sql = "UPDATE Item SET itemName=?, itemDescription=?, price=?, typeId=? WHERE itemId=?";
+					stmt = con.prepareStatement(sql);
+					stmt.setString(1, itemName);
+					stmt.setString(2, itemDescription);
+					stmt.setDouble(3, price);
+					stmt.setInt(4, typeId);
+					stmt.setString(5, itemId);
+					stmt.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                }
+            }
+        }
+    }
+    for (String paramName : request.getParameterMap().keySet()) {
+        if (paramName.startsWith("newSpecName_")) {
+            String[] paramParts = paramName.split("_");
+            if (paramParts.length == 3) {
+                String itemId = paramParts[1];
+                String newSpecName = request.getParameter(paramName);
+                String newInventoryQuantity = request.getParameter("newInventoryQuantity_" + itemId + "_" + paramParts[2]);
+                
+                // 獲取當前商品的最大 specId
+                int newSpecId = 0;
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager.getConnection(url, "root", "1234");
+                    String maxSpecIdSql = "SELECT MAX(specId) AS maxSpecId FROM Spec WHERE itemId=?";
+                    stmt = con.prepareStatement(maxSpecIdSql);
+                    stmt.setString(1, itemId);
+                    rs = stmt.executeQuery();
+                    if (rs.next()) {
+                        newSpecId = rs.getInt("maxSpecId") + 1;
+                    } else {
+                        newSpecId = 1;
+                    }
+                    rs.close();
+                    stmt.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                }
+
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager.getConnection(url, "root", "1234");
+                    // Insert new spec
+                    sql = "INSERT INTO Spec (itemId, specId, specName, inventoryQuantity) VALUES (?, ?, ?, ?)";
+                    stmt = con.prepareStatement(sql);
+                    stmt.setString(1, itemId);
+                    stmt.setInt(2, newSpecId);
+                    stmt.setString(3, newSpecName);
+                    stmt.setString(4, newInventoryQuantity);
+                    stmt.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                }
             }
         }
     }
 }
 
-// 上架新品
+//上架
 if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getParameter("formId"))) {
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
-        String itemName = request.getParameter("name");
-        String itemDescription = request.getParameter("description");
-        String picture = request.getParameter("picture");
-        double price = Double.parseDouble(request.getParameter("price"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        int typeId = Integer.parseInt(request.getParameter("type"));
-        String insertSql = "INSERT INTO Item (itemName, itemDescription, picture, price, inventoryQuantity, typeId) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO Item (itemName, itemDescription, price, typeId) VALUES (?, ?, ?, ?)";
         stmt = con.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
-        stmt.setString(1, itemName);
-        stmt.setString(2, itemDescription);
-        stmt.setString(3, picture);
-        stmt.setDouble(4, price);
-        stmt.setInt(5, quantity);
-        stmt.setInt(6, typeId);
+        stmt.setString(1, request.getParameter("name"));
+        stmt.setString(2, request.getParameter("description"));
+        stmt.setString(3, request.getParameter("price"));
+        stmt.setString(4, request.getParameter("type"));
+        stmt.executeUpdate();
+        rs = stmt.getGeneratedKeys();
+        String itemId = null;
+        if (rs.next()) {
+            itemId = rs.getString(1);
+        }
+        insertSql = "INSERT INTO Spec (itemId, specName, inventoryQuantity) VALUES (?, '標準', ?)";
+        stmt = con.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
+        stmt.setString(1, itemId);
+        stmt.setString(2, request.getParameter("quantity"));
         stmt.executeUpdate();
     } catch (Exception e) {
         e.printStackTrace();
@@ -108,15 +172,18 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "launch".equals(request.getP
     }
 }
 
-// 下架商品
+//下架
 if ("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getParameter("formId"))) {
     try {
         String itemId = request.getParameter("itemId");
         Class.forName("com.mysql.jdbc.Driver");
-        url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
         con = DriverManager.getConnection(url, "root", "1234");
-        sql = "DELETE FROM Item WHERE itemId = ?";
+        sql = "DELETE FROM Spec WHERE itemId = ?";
         stmt = con.prepareStatement(sql);
+        stmt.setString(1, itemId);
+        stmt.executeUpdate();
+		sql = "DELETE FROM Item WHERE itemId = ?";
+		stmt = con.prepareStatement(sql);
         stmt.setString(1, itemId);
         stmt.executeUpdate();
     } catch (Exception e) {
@@ -126,6 +193,7 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getP
         if (con != null) con.close();
     }
 }
+
 %>
 <!DOCTYPE html>
 <html>
@@ -139,6 +207,26 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getP
         function confirmDelete() {
             return confirm("確定要下架此商品嗎？");
         }
+		
+        function addSpec(itemId) {
+            var specContainer = document.getElementById('specContainer_' + itemId);
+            var newSpecDiv = document.createElement('div');
+            var specCount = specContainer.children.length;
+            var newSpecId = specCount; // 用規格量決定specId
+            newSpecDiv.innerHTML = '<input type="text" name="newSpecName_' + itemId + '_' + newSpecId + '" value="新規格' + (newSpecId + 1) + '" required>' +
+                                   '<input type="text" name="newInventoryQuantity_' + itemId + '_' + newSpecId + '" value="0" required>';
+            specContainer.appendChild(newSpecDiv);
+        }
+
+        function removeSpec(itemId) {
+            var specContainer = document.getElementById('specContainer_' + itemId);
+            var specCount = specContainer.children.length;
+            if (specCount > 1) {
+                specContainer.removeChild(specContainer.lastChild);
+            } else {
+                alert("至少保留一個規格");
+            }
+        }
     </script>
 </head>
 <body>
@@ -150,17 +238,18 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getP
                 <th>商品名稱</th>
                 <th>商品描述</th>
                 <th>價格</th>
-                <th>庫存數量</th>
                 <th>分類</th>
+                <th>規格/庫存數量</th>
+                <th>操作</th>
             </tr>
             <% 
-            Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
-            con = DriverManager.getConnection(url, "root", "1234");
-            sql = "SELECT itemId, itemName, itemDescription, price, inventoryQuantity, typeId FROM Item";
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
-            while (rs.next()) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection(url, "root", "1234");
+                sql = "SELECT itemId, itemName, itemDescription, price, typeId FROM Item";
+                stmt = con.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
             %>
             <tr>
                 <td><%= rs.getInt("itemId") %></td>
@@ -170,28 +259,61 @@ if ("POST".equalsIgnoreCase(request.getMethod()) && "remove".equals(request.getP
                     <input type="text" name="itemName_<%= rs.getString("itemId") %>" value="<%= rs.getString("itemName") %>" required>
                 </td>
                 <td>
-                    <input type="text" name="itemDescription_<%= rs.getInt("itemId") %>" value="<%= rs.getString("itemDescription") %>" required>
+                    <input type="text" name="itemDescription_<%= rs.getInt("itemId") %>" value="<%= rs.getString("itemDescription") %>">
                 </td>
                 <td>
                     <input type="text" name="price_<%= rs.getInt("itemId") %>" value="<%= rs.getDouble("price") %>" required>
                 </td>
                 <td>
-                    <input type="number" name="inventoryQuantity_<%= rs.getInt("itemId") %>" value="<%= rs.getInt("inventoryQuantity") %>" required>
-                </td>
-				<td>
                     <select name="type_<%= rs.getInt("itemId") %>">
                         <% for (Map<String, String> type : types) { %>
                         <option value="<%= type.get("typeId") %>" <%= rs.getInt("typeId") == Integer.parseInt(type.get("typeId")) ? "selected" : "" %>><%= type.get("typeName") %></option>
                         <% } %>
                     </select>
                 </td>
+                <td width="350px">
+                    <div id="specContainer_<%= rs.getInt("itemId") %>">
+                    <% 
+                    try {
+                        String specSql = "SELECT * FROM Spec WHERE itemId=?";
+                        stmtSpec = con.prepareStatement(specSql);
+                        stmtSpec.setInt(1, rs.getInt("itemId"));
+                        rsSpec = stmtSpec.executeQuery();
+                        while (rsSpec.next()) {
+                    %>
+                    <div>
+                        <input type="text" name="specName_<%= rsSpec.getInt("itemId") %>_<%= rsSpec.getInt("specId") %>" value="<%= rsSpec.getString("specName") %>" required>
+                        <input type="text" name="inventoryQuantity_<%= rsSpec.getInt("itemId") %>_<%= rsSpec.getInt("specId") %>" value="<%= rsSpec.getString("inventoryQuantity") %>" required>
+                    </div>
+                    <% 
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (rsSpec != null) rsSpec.close();
+                        if (stmtSpec != null) stmtSpec.close();
+                    }
+                    %>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" onclick="addSpec(<%= rs.getInt("itemId") %>)">增加規格</button>
+                    <button type="button" onclick="removeSpec(<%= rs.getInt("itemId") %>)">減少規格</button>
+                </td>
             </tr>
             <% 
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
             }
             %>
         </table>
         <input type="submit" value="確認更改">
-		<input type="reset" value="取消">
+        <input type="reset" value="取消">
     </form>
 
     <h1>上架新品</h1>
