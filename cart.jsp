@@ -33,7 +33,7 @@ try {
     url = "jdbc:mysql://localhost/final?serverTimezone=UTC&characterEncoding=UTF-8";
     con = DriverManager.getConnection(url, "root", "1234");
     if (!con.isClosed()) {
-        String sql = "SELECT Item.itemId, Item.itemName, Item.price, Cart.quantity FROM Item INNER JOIN Cart ON Item.itemId = Cart.itemId WHERE Cart.memberId = ?";
+        String sql = "SELECT Item.itemId, Item.itemName, Item.price, Cart.quantity, Cart.specId FROM Item INNER JOIN Cart ON Item.itemId = Cart.itemId WHERE Cart.memberId = ?";
         stmt = con.prepareStatement(sql);
         stmt.setInt(1, memberId);
         rs = stmt.executeQuery();
@@ -43,6 +43,7 @@ try {
             item.put("itemName", rs.getString("itemName"));
             item.put("price", rs.getString("price"));
             item.put("quantity", rs.getString("quantity"));
+            item.put("specId", rs.getString("specId")); // 添加specId
             cartItems.add(item);
             double itemPrice = Double.parseDouble(rs.getString("price"));
             int itemQuantity = Integer.parseInt(rs.getString("quantity"));
@@ -109,8 +110,8 @@ if (insufficientStock) {
 </head>
 <body>
     <h1>購物車</h1>
-	<p><a href="user.jsp">回到用戶頁面</a></p>
-	<p><a href="store.jsp">回到商店</a></p>
+    <p><a href="user.jsp">回到用戶頁面</a></p>
+    <p><a href="store.jsp">回到商店</a></p>
     <table border="1">
         <tr>
             <th>商品ID</th>
@@ -126,7 +127,7 @@ if (insufficientStock) {
             <td><%= item.get("price") %></td>
             <td><%= item.get("quantity") %></td>
             <td><%= Double.parseDouble(item.get("price")) * Integer.parseInt(item.get("quantity")) %></td>
-			<td>
+            <td>
                 <form action="updateCart.jsp" method="post">
                     <input type="hidden" name="itemId" value="<%= item.get("itemId") %>">
                     <button type="submit" name="action" value="decrease">-</button>
@@ -141,7 +142,7 @@ if (insufficientStock) {
             <td><%= totalPrice %></td>
         </tr>
     </table>
-	<!-- 顯示庫存不足的警告 -->
+    <!-- 顯示庫存不足的警告 -->
     <% if (session.getAttribute("insufficientStock") != null && (boolean) session.getAttribute("insufficientStock")) { %>
         <script>
             alert("庫存不足，將為您修改購物車內容。");
@@ -155,8 +156,9 @@ if (insufficientStock) {
             <input type="hidden" name="itemName" value="<%= item.get("itemName") %>">
             <input type="hidden" name="price" value="<%= item.get("price") %>">
             <input type="hidden" name="quantity" value="<%= item.get("quantity") %>">
+            <input type="hidden" name="specId" value="<%= item.get("specId") %>"> <!-- 添加specId -->
         <% } %>
-		<input type="hidden" name="memberId" value="<%= memberId %>">
+        <input type="hidden" name="memberId" value="<%= memberId %>">
         <input type="hidden" name="memberName" value="<%= memberName %>">
         <input type="hidden" name="address" value="<%= address %>">
         <input type="hidden" name="phoneNumber" value="<%= phoneNumber %>">

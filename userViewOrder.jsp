@@ -52,12 +52,13 @@ try {
 			<tr>
 				<th>商品ID</th>
 				<th>商品名稱</th>
+				<th>規格</th>
 				<th>價格</th>
 				<th>數量</th>
 			</tr>
 			<%
 			// 查詢當前訂單的詳細信息
-			String queryDetails = "SELECT od.itemId, i.itemName, i.price, od.quantity FROM OrderDetails od JOIN Item i ON od.itemId = i.itemId WHERE od.orderId = ?";
+			String queryDetails = "SELECT s.specName,s.specId,od.itemId, i.itemName, i.price, od.quantity FROM OrderDetails od JOIN Spec s ON od.itemId = s.itemId AND od.specId = s.specId JOIN Item i ON od.itemId = i.itemId WHERE od.orderId = ?";
 			psDetails = con.prepareStatement(queryDetails);
 			psDetails.setInt(1, orderId);
 			rsDetails = psDetails.executeQuery();
@@ -67,6 +68,7 @@ try {
 			<tr>
 				<td><%= rsDetails.getInt("itemId") %></td>
 				<td><%= rsDetails.getString("itemName") %></td>
+				<td><%= rsDetails.getString("specName") %></td>
 				<td><%= rsDetails.getBigDecimal("price") %></td>
 				<td><%= rsDetails.getInt("quantity") %></td>
 			</tr>

@@ -41,6 +41,7 @@ try {
         }
     }
 
+    // 檢查庫存
     if (!con.isClosed()) {
         String sql = "SELECT Cart.itemId, Cart.quantity, Item.inventoryQuantity AS stock FROM Cart INNER JOIN Item ON Cart.itemId = Item.itemId WHERE Cart.memberId = ?";
         stmt = con.prepareStatement(sql);
@@ -129,9 +130,6 @@ if (cartItems.isEmpty()) {
 </script>
 <%
 } else {
-    // 如果購物車不為空，則執行提交訂單的動作
-    // 這裡放置您的提交訂單的代碼
-    // 如果提交訂單成功，則顯示訂單已送出的警告訊息
     int orderId = 0; // 初始化訂單編號
     try {
         // 插入訂單數據
@@ -154,11 +152,14 @@ if (cartItems.isEmpty()) {
             for (Map<String, String> item : cartItems) {
                 int itemId = Integer.parseInt(item.get("itemId"));
                 int quantity = Integer.parseInt(item.get("quantity"));
-                String insertOrderDetailsQuery = "INSERT INTO OrderDetails (orderId, itemId, quantity) VALUES (?, ?, ?)";
+                // 假設specId設為0，如果有不同的值請修改
+                String specId = request.getParameter("specId");
+                String insertOrderDetailsQuery = "INSERT INTO OrderDetails (orderId, itemId, specId, quantity) VALUES (?, ?, ?, ?)";
                 PreparedStatement insertOrderDetailsStmt = con.prepareStatement(insertOrderDetailsQuery);
                 insertOrderDetailsStmt.setInt(1, orderId); // 使用訂單編號
                 insertOrderDetailsStmt.setInt(2, itemId);
-                insertOrderDetailsStmt.setInt(3, quantity);
+                insertOrderDetailsStmt.setString(3, specId); // 設置specId
+                insertOrderDetailsStmt.setInt(4, quantity);
                 insertOrderDetailsStmt.executeUpdate();
             }
 
