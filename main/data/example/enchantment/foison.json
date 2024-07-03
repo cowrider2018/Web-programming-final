@@ -1,0 +1,2229 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "text": "豐饒"
+  },
+  "effects": {
+    "minecraft:location_changed": [
+	{
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:wheat"
+        }
+      }
+    }
+  },
+		{
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:carrots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:potatoes"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:melon_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "7"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pumpkin_stem"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 1, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 1, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 1, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:beetroots"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 0, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 0, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 0, -1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 0, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 0, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 0, 0],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [-1, 0, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [0, 0, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:set_block_properties",
+      "properties": {
+        "age": "3"
+      },
+      "offset": [1, 0, 1],
+      "trigger_game_event": "minecraft:block_change"
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:sweet_berry_bush"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [-1, 1, -1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [0, 1, -1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [1, 1, -1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [-1, 1, 0]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [0, 1, 0]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [1, 1, 0]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [-1, 1, 1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [0, 1, 1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+    "effect": {
+      "type": "minecraft:replace_block",
+      "block_state": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:torchflower"
+        }
+      },
+      "offset": [1, 1, 1]
+    },
+    "requirements": {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:torchflower_crop"
+        }
+      }
+    }
+  },
+  {
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [0, 0, 0],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [0, 1, 0]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [1, 0, 0],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [1, 1, 0]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [-1, 0, 0],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [-1, 1, 0]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 0,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [0, 0, 1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [0, 1, 1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [0, 0, -1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [0, 1, -1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 0,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [1, 0, 1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [1, 1, 1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [-1, 0, 1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [-1, 1, 1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": 1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [1, 0, -1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [1, 1, -1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": 1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:set_block_properties",
+    "properties": {
+      "age": "4",
+      "half": "lower"
+    },
+    "offset": [-1, 0, -1],
+    "trigger_game_event": "minecraft:block_change"
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+},
+{
+  "effect": {
+    "type": "minecraft:replace_block",
+    "block_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:pitcher_crop",
+        "Properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      }
+    },
+    "offset": [-1, 1, -1]
+  },
+  "requirements": [
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 1,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:air"
+        }
+      }
+    },
+    {
+      "condition": "minecraft:location_check",
+      "offsetX": -1,
+      "offsetY": 0,
+      "offsetZ": -1,
+      "predicate": {
+        "block": {
+          "blocks": "minecraft:pitcher_crop"
+        }
+      }
+    }
+  ]
+}
+    ]
+  },
+  "max_cost": {
+    "base": 30,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 5
+}

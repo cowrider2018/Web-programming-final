@@ -1,0 +1,47 @@
+{
+    "anvil_cost": 4,
+    "description": {
+      "text": "龍之吐息"
+    },
+    "effects": {
+      "minecraft:projectile_spawned": [
+        {
+			"effect": {
+				"type": "minecraft:run_function",
+				"function":"example:roar"
+			}
+        },
+		{
+			"effect": {
+				"type":"minecraft:damage_item",
+				"amount":382
+			}
+        },
+		{
+			"effect": {
+				"type":"minecraft:play_sound",
+				"sound":"minecraft:entity.warden.roar",
+				"volume":10.0,
+				"pitch":1.0
+			}
+        }
+      ]
+    },
+    "exclusive_set": "#minecraft:exclusive_set/crossbow",
+	"exclusive_set":"example:volley",
+	"exclusive_set":"minecraft:unbreaking",
+    "max_cost": {
+      "base": 25,
+      "per_level_above_first": 5
+    },
+    "max_level": 1,
+    "min_cost": {
+      "base": 15,
+      "per_level_above_first": 5
+    },
+    "slots": [
+      "mainhand"
+    ],
+    "supported_items": "#minecraft:enchantable/bow",
+    "weight": 5
+  }

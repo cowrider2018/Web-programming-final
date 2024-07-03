@@ -1,0 +1,36 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "text": "野獸氣味"
+  },
+  "effects": {
+    "minecraft:tick": [
+		{
+			"affected": "attacker",
+			"enchanted": "attacker",
+			"effect": {
+			"type": "minecraft:run_function",
+			"function": "example:goblin"
+			},
+			"requirements": {
+					"chance": 1,
+					"condition": "minecraft:random_chance"
+				}
+		}
+    ]
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 5
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 5
+  },
+  "slots": [
+    "head"
+  ],
+  "supported_items": "#minecraft:enchantable/head_armor",
+  "weight": 5
+}
